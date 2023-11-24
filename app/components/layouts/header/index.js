@@ -40,7 +40,6 @@ const Header = ({ data }) => {
 									<li key={ menuItem?.ID } className="mr-2 ml-2">
                   <Link href={menuItem?.url }
                         dangerouslySetInnerHTML={ { __html: menuItem.title } }>
-									
 									</Link>
                   </li>
 								) ) : null }
