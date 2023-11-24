@@ -1,4 +1,4 @@
-// File: E:\xampp\htdocs\nick\nick-next-app-main\app\layout.tsx
+// File: E:\xampp\htdocs\nick\nick-next-app\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

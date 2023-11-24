@@ -1,4 +1,4 @@
-// File: E:\xampp\htdocs\nick\nick-next-app-main\app\contact\page.js
+// File: E:\xampp\htdocs\nick\nick-next-app\app\contact\page.js
 import * as entry from '../../../../app/contact/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
