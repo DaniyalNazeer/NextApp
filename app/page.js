@@ -1,9 +1,8 @@
-// "use client";
 import Image from "next/image";
 import Header from "./components/layouts/header";
 import Footer from "./components/layouts/footer";
 import BaseLayout from './base-layout/base-layout'
-
+import Link from "next/link";
 
 // Home Banner Endpoint Start
 
@@ -81,12 +80,12 @@ const portfolioRes = portfolioData.map(portfoliosec => ({ text: portfoliosec.tit
             <div className="banner-main-inner flex flex-row items-center justify-center">
               <div className="banner-inner-content">                
                 <h1>
-                  {result[0].text}
+                  {result[0]?.text}
                 </h1>
               </div>
               <div className="banner-inner-img">
                 <img
-                  src= {result[0].image}
+                  src= {result[0]?.image}
                   width={"600px"}
                   height={"600px"}
                   alt="Picture of the author"
@@ -102,38 +101,46 @@ const portfolioRes = portfolioData.map(portfoliosec => ({ text: portfoliosec.tit
               <div className="about-info-img">
                 <img
                   // style={{ width:100 , height : 400 }}
-                  src={aboutRes[0].AboutImage}
+                  src={aboutRes[0]?.AboutImage}
                   width={"500px"}
                   height={"500px"}
                   alt="Picture of the author"
                 />
               </div>
               <div className="about-info-box">
-                <h2>{aboutRes[0].text}</h2>
-                <p>
-                {aboutRes[0].description}
-                </p>
-                <a href="void:;" className="read-more flex flex-row justify-center">
+                <h2>{aboutRes[0]?.text}</h2>
+      
+                <p dangerouslySetInnerHTML={{ __html: aboutRes[0]?.description }} />
                 
-                {aboutRes[0].aboutBtnLabel}
-                
-                </a>
+                <Link href="/about" className="read-more flex flex-row justify-center">
+ 
+                {aboutRes[0]?.aboutBtnLabel}<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"/>
+                </svg>
+                               
+                </Link>
+
               </div>
             </div>
 
             <div className="about-info-inner flex flex-row items-center justify-center">
               <div className="about-info-box about-info-box2">
-                <h2>{portfolioRes[0].text}</h2>
-                <p>
-                {portfolioRes[0].PortfolioDescription}
-                </p>
-                <a href="void:;" className="read-more flex flex-row justify-center">
-                {portfolioRes[0].PortfolioBtnLabel}
-                </a>
+                <h2>{portfolioRes[0]?.text}</h2>
+                
+                <p dangerouslySetInnerHTML={{ __html: portfolioRes[0]?.PortfolioDescription }} />
+                
+                <Link href="/portfolio" className="read-more flex flex-row justify-center">
+
+                {portfolioRes[0]?.PortfolioBtnLabel}<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"/>
+                </svg>
+                
+                </Link>
+              
               </div>
               <div className="about-info-img about-info-img2">
                 <img
-                  src= {portfolioRes[0].PortfolioImage}
+                  src= {portfolioRes[0]?.PortfolioImage}
                   width={"500px"}
                   height={"500px"}
                   alt="Picture of the author"

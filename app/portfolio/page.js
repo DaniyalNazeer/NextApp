@@ -1,14 +1,17 @@
+'use client || use server'
 import Head from "next/head";
 import Link from "next/link";
 import { isEmpty , isArray} from "lodash";
 import Image from "next/image"; 
 import react from 'react';
 import BaseLayout from '../base-layout/base-layout'
+// import PortfolioModal from '../components/PortfolioModal'
+import { ModalComponent } from "./portfoliodetail";
 
 
 const getAcgPropertyData = async (context) => {
 
-const AcgPropertyurl = `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/acg_property`;
+const AcgPropertyurl = `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/acg_property?order=asc`;
 
 try {
       const AcgProperty = await fetch(AcgPropertyurl);
@@ -20,7 +23,7 @@ try {
 
   const getRealizedProperty = async (context) => {
 
-    const RealizedPropertyurl = `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/realized_property`;
+    const RealizedPropertyurl = `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/realized_property?order=asc`;
     
     try {
           const RealizedProperty = await fetch(RealizedPropertyurl);
@@ -29,7 +32,9 @@ try {
         } catch (error) {}
       }; 
 
-const page = async () => {
+const page = async ({ searchParams }) => {
+
+const showModal = searchParams?.modal;    
 
 const AcgProperty = await getAcgPropertyData();
 
@@ -51,13 +56,15 @@ const RealizedPropRes = await getRealizedProperty();
                     AcgProperty.map((item) => {
                     return (
                     <div className="current-portfolio-item">
-                     <a href="#" key={item.id}>
+                     <Link href={ `/portfolio/${ item?.id }` } key={item.id}>
+                    
                      <img 
                      src={ item.property_featured_image.guid } 
                      alt="img" 
                       />
                     <h4>{ item.title.rendered }</h4>
-                    </a>
+                    
+                    </Link>
                     </div>  
                     )
                     })
@@ -75,7 +82,10 @@ const RealizedPropRes = await getRealizedProperty();
                 <div className="realized-portfolio-head">
                     <h3><span>Realized</span> Portfolio</h3>
                 </div>
-                <div className="realized-portfolio-inner flex-row">
+
+                <ModalComponent data={RealizedPropRes}/>
+
+                {/* <div className="realized-portfolio-inner flex-row">
                     
                     {
                         RealizedPropRes.map((item) => {
@@ -92,52 +102,15 @@ const RealizedPropRes = await getRealizedProperty();
                         })
                     }
 
-                    {/* <div className="realized-item-backdescribe">
-                            <div className="realized-backdescribe-container">
-                                <div className="realized-backdescribe-btn">
-                                    <button className="cross-btn" id="crossBtn2">X</button>
-                                </div>
-                                <div className="realized-backdescribe-inner">
-                                    <div className="realized-backdescribe-box">
-                                        <div className="realized-backdescribe-img">
-                                            <img src="images/realized-img1.webp" alt="img" className="img-fluid" />
-                                        </div>
-                                        <div className="realized-backdescribe-content">
-                                            <h4>Andrew Wright</h4>
-                                            <span>Chief Executive Officer</span>
-                                            <ul>
-                                                <li>
-                                                    <img src="images/pro-icon1.webp" alt="icon" className="img-fluid" />
-                                                    <p><span>Strategy:</span> Value Add</p>
-                                                </li>
-                                                <li>
-                                                    <img src="images/pro-icon1.webp" alt="icon" className="img-fluid" />
-                                                    <p><span>Strategy:</span> Value Add</p>
-                                                </li>
-                                                <li>
-                                                    <img src="images/pro-icon1.webp" alt="icon" className="img-fluid" />
-                                                    <p><span>Strategy:</span> Value Add</p>
-                                                </li>
-                                                <li>
-                                                    <img src="images/pro-icon1.webp" alt="icon" className="img-fluid" />
-                                                    <p><span>Strategy:</span> Value Add</p>
-                                                </li>
-                                                <li>
-                                                    <img src="images/pro-icon1.webp" alt="icon" className="img-fluid" />
-                                                    <p><span>Strategy:</span> Value Add</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-                </div>
+                    
+                </div> */}
+                
             </div>
         </div>
     </div>
     {/* <!-- Realized Portfolio Section End Here --> */}
 </div>  
+
 
 </BaseLayout>
 

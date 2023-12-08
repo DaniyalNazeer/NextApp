@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Header from '../components/layouts/header/index'
 import Footer from '../components/layouts/footer/index'
-
  
 // Header & Footer Endpoint Start
 
