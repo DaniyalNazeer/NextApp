@@ -37,8 +37,9 @@ const Header = ({ data }) => {
 
               <ul className="navbar flex">
               { ! isEmpty( headerMenuItems ) && headerMenuItems.length ? headerMenuItems.map( (menuItem, index ) => (
-									<li key={ menuItem?.ID } className="mr-2 ml-2">
-                  <Link href={menuItem?.url}
+									<li className="mr-2 ml-2">
+                  <Link key={ menuItem?.ID }
+									      href={ getPathNameFromUrl( menuItem?.url ?? '' ) || '/' }
                         dangerouslySetInnerHTML={ { __html: menuItem.title } }>
 									</Link>
                   </li>
