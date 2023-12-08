@@ -1,1 +1,14 @@
-{}
+{
+  "/_not-found": "app/_not-found.js",
+  "/contact/page": "app/contact/page.js",
+  "/disclosures/page": "app/disclosures/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/legal-disclaimer/page": "app/legal-disclaimer/page.js",
+  "/news/[id]/page": "app/news/[id]/page.js",
+  "/news/page": "app/news/page.js",
+  "/page": "app/page.js",
+  "/portfolio/[id]/page": "app/portfolio/[id]/page.js",
+  "/portfolio/page": "app/portfolio/page.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/about/page": "app/about/page.js"
+}

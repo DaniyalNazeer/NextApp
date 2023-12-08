@@ -38,7 +38,7 @@ const Header = ({ data }) => {
               <ul className="navbar flex">
               { ! isEmpty( headerMenuItems ) && headerMenuItems.length ? headerMenuItems.map( (menuItem, index ) => (
 									<li key={ menuItem?.ID } className="mr-2 ml-2">
-                  <Link href="https://nick-next-appv-1.vercel.app/about"
+                  <Link href={menuItem?.url}
                         dangerouslySetInnerHTML={ { __html: menuItem.title } }>
 									</Link>
                   </li>
