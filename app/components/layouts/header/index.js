@@ -3,7 +3,7 @@ import {useState}  from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { isEmpty , isArray} from "lodash";
-import {getPathNameFromUrl} from "../../../../src/utils/miscellaneous.js";
+import {getPathNameFromUrl} from "../../../../src/utils/miscellaneous";
 
 
 const Header = ({ data }) => {
@@ -39,7 +39,7 @@ const Header = ({ data }) => {
               { ! isEmpty( headerMenuItems ) && headerMenuItems.length ? headerMenuItems.map( (menuItem, index ) => (
 									<li className="mr-2 ml-2">
                   <Link key={ menuItem?.ID }
-									      href={ getPathNameFromUrl( menuItem?.url ?? '' ) || '/' }
+									      href={  menuItem?.url  || '/' }
                         dangerouslySetInnerHTML={ { __html: menuItem.title } }>
 									</Link>
                   </li>
