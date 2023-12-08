@@ -1,8 +1,11 @@
 'use client'
 import { useState } from "react";
 import BasicModal from "../components/BasicModal";
-
-export  const ModalComponent =(data:object) => {
+type DataObject = {
+    data: Array<any>; // Adjust the type inside the array as per your data structure
+  };
+  
+export  const ModalComponent =(data:any) => {
     const [_data,setData] = useState(false)
     const [obj,setObj] = useState<object>([])  
     var conditionModal = false;
@@ -24,7 +27,7 @@ const closeModal=()=>{
       <div className="our-team-inner flex-row">
       
       {
-         data.data.map((item , index) => {
+        data?.data?.map((item :any, index:any) => {
            
          return (
           

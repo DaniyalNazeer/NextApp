@@ -2,7 +2,7 @@
 import { useState } from "react";
 import PortfolioModal from "../components/PortfolioModal";
 
-export  const ModalComponent =(data:object) => {
+export  const ModalComponent =(data:any) => {
     const [_data,setData] = useState(false)
     const [obj,setObj] = useState<object>([])  
     var conditionModal = false;
@@ -24,7 +24,7 @@ const closeModal=()=>{
       <div className="realized-portfolio-inner flex-row">
       
       {
-         data.data.map((item , index) => {
+         data.data.map((item :any, index:any) => {
            
          return (
 

@@ -53,10 +53,10 @@ const RealizedPropRes = await getRealizedProperty();
                 </div>
                 <div className="current-portfolio-inner flex-row">
                   {
-                    AcgProperty.map((item) => {
+                    AcgProperty?.map((item) => {
                     return (
                     <div className="current-portfolio-item">
-                     <Link href={ `/portfolio/${ item?.id }` } key={item.id}>
+                     <Link href={ `/portfolio/${item?.id}`} key={item.id}>
                     
                      <img 
                      src={ item.property_featured_image.guid } 
